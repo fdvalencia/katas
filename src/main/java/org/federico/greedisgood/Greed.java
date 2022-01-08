@@ -19,7 +19,7 @@ public class Greed {
 
         return groupDiceValueByRepetition.entrySet().stream().map(
                         diceValueByRepetition -> threeRepetitionDiceValue(diceValueByRepetition.getValue(), diceValueByRepetition.getKey()) +
-                                ResidualThreeRepetitionDiceValue(diceValueByRepetition.getValue(), diceValueByRepetition.getKey()) +
+                                residualThreeRepetitionDiceValue(diceValueByRepetition.getValue(), diceValueByRepetition.getKey()) +
                                 lessThanThreeRepetitionDiceValue(diceValueByRepetition.getValue(), diceValueByRepetition.getKey()))
                 .reduce(0L, Long::sum)
                 .intValue();
@@ -44,7 +44,7 @@ public class Greed {
             return 0;
     }
 
-    private static long ResidualThreeRepetitionDiceValue(Long diceRepetition, Integer diceValue) {
+    private static long residualThreeRepetitionDiceValue(Long diceRepetition, Integer diceValue) {
         long residual = diceRepetition - MAX_DICE_REPETITION;
         if (diceRepetition >= MAX_DICE_REPETITION && diceValue == 1) {
             return residual * 100;
